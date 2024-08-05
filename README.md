@@ -38,7 +38,7 @@ Provide step-by-step instructions on how to install and set up your project.
    Ensure the following files are included in your HTML:
 
    ```html
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.2/style.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.2/styles.min.css">
    <script src="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.2/main.min.js" defer></script>
    ```
 
