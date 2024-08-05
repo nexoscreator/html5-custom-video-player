@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   videoElement.src = videoSrc;
 
   // Set the video title text
-  const videoinfo = document.createElement('h2');
+  const videoinfo = document.createElement('h4');
   videoinfo.className = 'video-title';
   videoinfo.textContent = videoTitle;
 
@@ -26,25 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create and configure the backward button
   const backwardButton = document.createElement('span');
   backwardButton.className = 'state-btn state-backward';
-  backwardButton.innerHTML = `
-            <ion-icon name="play-back-outline"></ion-icon>
-            <span class="backward-duration">5</span>
-        `;
+  backwardButton.innerHTML = `<ion-icon name="play-back-outline"></ion-icon><span class="backward-duration">5</span>`;
 
   // Create and configure the main play/pause button
   const mainStateButton = document.createElement('span');
   mainStateButton.className = 'main-state state-btn';
-  mainStateButton.innerHTML = `
-            <ion-icon name="play-outline"></ion-icon>
-        `;
+  mainStateButton.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
 
   // Create and configure the forward button
   const forwardButton = document.createElement('span');
   forwardButton.className = 'state-btn state-forward';
-  forwardButton.innerHTML = `
-            <span class="forward-duration">5</span>
-            <ion-icon name="play-forward-outline"></ion-icon>
-        `;
+  forwardButton.innerHTML = `<span class="forward-duration">5</span><ion-icon name="play-forward-outline"></ion-icon>`;
 
   // Append buttons to player state container
   playerState.appendChild(backwardButton);
@@ -238,11 +230,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   videoContainer.addEventListener("mouseleave", hideControls);
   videoContainer.addEventListener("mousemove", (e) => {
+    videoinfo.classList.add("show-controls");
     controls.classList.add("show-controls");
     hideControls();
   });
   videoContainer.addEventListener("touchstart", (e) => {
     controls.classList.add("show-controls");
+    videoinfo.classList.add("show-controls");
     touchClientX = e.changedTouches[0].clientX;
     const currentTimeRect = currentTime.getBoundingClientRect();
     touchPastDurationWidth = currentTimeRect.width;
@@ -258,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   controls.addEventListener("mouseenter", (e) => {
     controls.classList.add("show-controls");
+    videoinfo.classList.add("show-controls");
     isCursorOnControls = true;
   });
 
@@ -315,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
     muted = video.muted;
     if (video.paused) {
       controls.classList.add("show-controls");
+      videoinfo.classList.add("show-controls");
       mainState.classList.add("show-state");
       handleMainStateIcon(`<ion-icon name="play-outline"></ion-icon>`);
     }
@@ -348,6 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
     isPlaying = false;
     playPause.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
     controls.classList.add("show-controls");
+    videoinfo.classList.add("show-controls");
     mainState.classList.add("show-state");
     handleMainStateIcon(`<ion-icon name="play-outline"></ion-icon>`);
     if (video.ended) {
@@ -427,35 +424,36 @@ document.addEventListener('DOMContentLoaded', function() {
     timeout = setTimeout(() => {
       if (isPlaying && !isCursorOnControls) {
         controls.classList.remove("show-controls");
+        videoinfo.classList.remove("show-controls");
         settingMenu.classList.remove("show-setting-menu");
       }
     }, 1000);
   }
-  
+
   function toggleMainState(e) {
     e.stopPropagation();
     const path = e.composedPath(); // Get the event path
 
     if (!path.includes(controls)) {
-        if (!isPlaying) {
-            play();
-        } else {
-            pause();
-        }
+      if (!isPlaying) {
+        play();
+      } else {
+        pause();
+      }
     }
-}
+  }
 
 
-//  function toggleMainState(e) {
+  //  function toggleMainState(e) {
   //  e.stopPropagation();
-//  if (!e.path.includes(controls)) {
- //     if (!isPlaying) {
-   //     play();
+  //  if (!e.path.includes(controls)) {
+  //     if (!isPlaying) {
+  //     play();
   //    } else {
   //      pause();
- //     }
+  //     }
   //  }
- // }
+  // }
 
   function handleVolume(e) {
     const totalVolRect = totalVol.getBoundingClientRect();
