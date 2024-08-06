@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Select the video player container with the new class
   const videoContainer = document.querySelector('.nexos-video-player');
   const videoSrc = videoContainer.getAttribute('data-src');
   const videoTitle = videoContainer.getAttribute('data-title');
@@ -7,17 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create the video element
   const videoElement = document.createElement('video');
   videoElement.id = 'video';
-  videoElement.disableRemotePlayback = true; // or videoElement.setAttribute('disableRemotePlayback', ''); if you need to support older browsers
+  videoElement.disableRemotePlayback = true;
+  videoElement.setAttribute('disableRemotePlayback', '');
   videoElement.src = videoSrc;
+  videoContainer.appendChild(videoElement);
 
   // Set the video title text
   const videoinfo = document.createElement('h4');
   videoinfo.className = 'video-title';
   videoinfo.textContent = videoTitle;
+  videoContainer.appendChild(videoinfo);
 
   // Create a new <span> element for the loader
   const loaderspn = document.createElement('span');
   loaderspn.className = 'custom-loader';
+  videoContainer.appendChild(loaderspn);
 
   // Create the player state container <div>
   const playerState = document.createElement('div');
@@ -27,21 +30,22 @@ document.addEventListener('DOMContentLoaded', function() {
   const backwardButton = document.createElement('span');
   backwardButton.className = 'state-btn state-backward';
   backwardButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M480 145.52v221c0 13.28-13 21.72-23.63 15.35L267.5 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113C467 123.8 480 132.24 480 145.52zM251.43 145.52v221c0 13.28-13 21.72-23.63 15.35L38.93 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113c10.64-6.4 23.63 2.04 23.63 15.32z"/></svg><span class="backward-duration">5</span>`;
+  playerState.appendChild(backwardButton);
 
   // Create and configure the main play/pause button
   const mainStateButton = document.createElement('span');
   mainStateButton.className = 'main-state state-btn';
   mainStateButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg>`;
+  playerState.appendChild(mainStateButton);
 
   // Create and configure the forward button
   const forwardButton = document.createElement('span');
   forwardButton.className = 'state-btn state-forward';
   forwardButton.innerHTML = `<span class="forward-duration">5</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113C45 123.8 32 132.24 32 145.52zM260.57 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113c-10.64-6.47-23.63 1.97-23.63 15.25z"/></svg>`;
+  playerState.appendChild(forwardButton);
 
   // Append buttons to player state container
-  playerState.appendChild(backwardButton);
-  playerState.appendChild(mainStateButton);
-  playerState.appendChild(forwardButton);
+  videoContainer.appendChild(playerState);
 
   // Create the controls container <div>
   const controlsdiv = document.createElement('div');
@@ -51,21 +55,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const durationDiv = document.createElement('div');
   durationDiv.className = 'duration';
   durationDiv.innerHTML = `<div class="current-time"></div><div class="hover-time"><span class="hover-duration"></span></div><div class="buffer"></div>`;
+  controlsdiv.appendChild(durationDiv);
 
   // Create and configure the button controls container
   const btnControls = document.createElement('div');
   btnControls.className = 'btn-controls';
   btnControls.innerHTML = `<div class="btn-con"><span class="play-pause control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg></span><span class="volume"><span class="mute-unmute control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M126 192H56a8 8 0 00-8 8v112a8 8 0 008 8h69.65a15.93 15.93 0 0110.14 3.54l91.47 74.89A8 8 0 00240 392V120a8 8 0 00-12.74-6.43l-91.47 74.89A15 15 0 01126 192zM320 320c9.74-19.38 16-40.84 16-64 0-23.48-6-44.42-16-64M368 368c19.48-33.92 32-64.06 32-112s-12-77.74-32-112M416 416c30-46 48-91.43 48-160s-18-113-48-160"/></svg></span><div class="max-vol"><div class="current-vol"></div></div></span><span class="time-container"><span class="current-duration">0:00</span><span>/</span><span class="total-duration">0:00</span></span></div><div class="right-controls"><span class="backward control-btn" title="5 backward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M480 145.52v221c0 13.28-13 21.72-23.63 15.35L267.5 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113C467 123.8 480 132.24 480 145.52zM251.43 145.52v221c0 13.28-13 21.72-23.63 15.35L38.93 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113c10.64-6.4 23.63 2.04 23.63 15.32z"/></svg></span><span class="forward control-btn" title="5 forward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113C45 123.8 32 132.24 32 145.52zM260.57 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113c-10.64-6.47-23.63 1.97-23.63 15.25z"/></svg></span><span class="mini-player control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87"/><path d="M144 80h224M112 128h288"/></svg></span><span class="settings control-btn"><span class="setting-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M368 128h80M64 128h240M368 384h80M64 384h240M208 256h240M64 256h80"/><circle cx="336" cy="128" r="32"/><circle cx="176" cy="256" r="32"/><circle cx="336" cy="384" r="32"/></svg></span><ul class="setting-menu"><li data-value="0.25">0.25x</li><li data-value="0.5">0.5x</li><li data-value="0.75">0.75x</li><li data-value="1" class="speed-active">1x</li><li data-value="1.25">1.25x</li><li data-value="1.5">1.5x</li><li data-value="1.75">1.75x</li><li data-value="2">2x</li></ul></span><span class="theater-btn control-btn"><span class="theater-default"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><rect x="80" y="16" width="352" height="480" rx="48" ry="48" transform="rotate(-90 256 256)"/></svg></span><span class="theater-active"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="32" y="96" width="448" height="272" rx="32.14" ry="32.14"/><path d="M128 416h256"/></svg></span></span><span class="fullscreen-btn control-btn" title="fullscreen"><span class="full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M336 448h56a56 56 0 0056-56v-56M448 176v-56a56 56 0 00-56-56h-56M176 448h-56a56 56 0 01-56-56v-56M64 176v-56a56 56 0 0156-56h56"/></svg></span><span class="contract"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M304 416V304h112M314.2 314.23L432 432M208 96v112H96M197.8 197.77L80 80M416 208H304V96M314.23 197.8L432 80M96 304h112v112M197.77 314.2L80 432"/></svg></span></span></div>`;
-
-  // Append the duration and button controls to the controls container
-  controlsdiv.appendChild(durationDiv);
   controlsdiv.appendChild(btnControls);
 
-  // Append loader, player state, and controls to video container
-  videoContainer.appendChild(videoElement);
-  videoContainer.appendChild(loaderspn);
-  videoContainer.appendChild(videoinfo);
-  videoContainer.appendChild(playerState);
+  // Append the duration and button controls to the controls container
   videoContainer.appendChild(controlsdiv);
 
   const video = document.querySelector("video");

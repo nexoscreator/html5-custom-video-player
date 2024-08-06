@@ -6,20 +6,38 @@
 ---
 
 # Custom HTML5 Video Player
-![image](preview.png)
-A modern and feature-rich A custom HTML5 video player with a sleek design.
+
+![image](.github/preview.png)
+
+This project features a custom video player built using plain JavaScript. It includes various functionalities such as play/pause control, volume adjustment, playback speed settings, fullscreen toggle, and more.
 
 ---
 
 ### Features
 
-- Lazy Loading...
 - Responsive design for various screen sizes.
-- Customizable player controls.
 - Support for various video formats.
 - Touch and click navigation support.
+- Keyboard Shortcut Key Support
+- Customizable player controls.
+- Play/Pause Control, Volume Control, Playback Controls, Fullscreen Mode, Playback Speed Adjustment, Video Navigation, Mini Player and Theater Mode, Loading Indicator.
 
 ---
+
+## Keyboard Shortcuts
+
+This custom video player supports the following keyboard shortcuts to enhance your video playback experience:
+
+| **Shortcut Key** | **Action**               | **Description**                                  |
+|------------------|--------------------------|--------------------------------------------------|
+| `f`              | Toggle Fullscreen        | Enter or exit fullscreen mode.                  |
+| `→` (Right Arrow) | Forward                   | Skip the video forward.                         |
+| `←` (Left Arrow)  | Backward                  | Rewind the video.                               |
+| `t`              | Toggle Theater Mode      | Switch between normal and theater modes.        |
+| `i`              | Toggle Mini Player       | Activate or deactivate mini player view.        |
+| `m`              | Toggle Mute/Unmute       | Mute or unmute the video.                       |
+| `+`              | Increase Playback Speed  | Increase the playback speed.                    |
+| `-`              | Decrease Playback Speed  | Decrease the playback speed.                    |
 
 ### Links
 
@@ -33,22 +51,28 @@ A modern and feature-rich A custom HTML5 video player with a sleek design.
 
 Provide step-by-step instructions on how to install and set up your project.
 
-1. **Include the CSS and JavaScript Files:**
-
-   Ensure the following files are included in your HTML:
-
-   ```html
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.2/styles.min.css">
-   <script src="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.2/main.min.js" defer></script>
-   ```
-
-2. **Add the HTML Structure:**
+1. **Include the Video Player in HTML**
 
    Use the following HTML to include the video player in your page:
 
    ```html
-   <div class="nexos-video-player" data-title="YOUR VIDEO TITLE" data-src="path/to/your-video.mp4">
-   </div>
+   <div class="nexos-video-player" data-src="path/to/your/video.mp4" data-title="Video Title"></div>
+   ```
+
+2. **Link CSS Styles**
+
+   Include the necessary CSS to style the video player and controls.
+   
+   ```html
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.3/video-player.min.css">
+   ```
+
+3. **Link the JavaScript**
+
+   Add the JavaScript code cdn link provided below to the functionality of the video player.
+   
+   ```html
+   <script src="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.3/video-player.min.js" defer></script>
    ```
 
 ---
@@ -64,9 +88,10 @@ Customize the player by modifying the CSS styles in styles.css and the JavaScrip
    ```
 
 2. **Customize CSS:**
-Customize the player styles by modifying the `styles.css` file.
+Customize the player styles by modifying the `video-player.css` file.
+
 3.  **Customize JavaScript:**
-Adjust player functionality by editing the `main.js` file. You can update controls, navigation, or error handling as needed.
+Adjust player functionality by editing the `video-player.js` file. You can update controls, navigation, or error handling as needed.
 
 ---
 
