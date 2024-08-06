@@ -31,6 +31,16 @@ body {
   object-fit: cover;
 }
 
+.nexos-video-player svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke-linejoin: round;
+  stroke: currentColor;
+  stroke-miterlimit: 10;
+  stroke-width: 32;
+}
+
 .nexos-video-player .video-title {
   position: absolute;
   top: 0;
@@ -52,8 +62,8 @@ body {
 .custom-loader {
   position: absolute;
   top: 35.75%;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border-top: 5px solid transparent;
   border-right: 5px solid #ffffff;
