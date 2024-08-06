@@ -1,13 +1,3 @@
-body {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #131418;
-}
-
 .nexos-video-player {
   display: flex;
   justify-content: center;
@@ -18,17 +8,37 @@ body {
   padding-top: 56.25%;
   background: rgb(25, 25, 25);
   overflow: hidden;
-  margin: 10px;
   border-radius: 8px;
 }
 
 .nexos-video-player video {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.nexos-video-player svg {
+  fill: none;
+  stroke-linejoin: round;
+  stroke: currentColor;
+  stroke-miterlimit: 10;
+  stroke-width: 28;
+}
+
+.custom-loader {
+  position: absolute;
+  top: 35.75%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  border-top-color: transparent;
+  z-index: 9999;
+  animation: rotation 2s infinite ease;
+  -webkit-animation: rotation 2s infinite ease;
+  display: none;
 }
 
 .nexos-video-player .video-title {
@@ -38,7 +48,7 @@ body {
   margin: 0;
   padding: 0.5rem 0.75rem;
   width: 100%;
-  background: linear-gradient(to bottom, #000000b8 100%, transparent);
+  background: linear-gradient(to bottom, #000000b8 -100%, transparent);
   box-sizing: border-box;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   user-select: none;
@@ -49,29 +59,18 @@ body {
   z-index: 99;
 }
 
-.custom-loader {
-  position: absolute;
-  top: 35.75%;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border-top: 5px solid transparent;
-  border-right: 5px solid #ffffff;
-  border-left: 5px solid #ffffff;
-  border-bottom: 5px solid #ffffff;
-  z-index: 9999;
-  animation: rotation 2s infinite ease;
-  -webkit-animation: rotation 2s infinite ease;
-  display: none;
-}
-
 .player-state {
   display: flex;
-  top: 35.75%;
   align-items: center;
+  justify-content: space-around;
+  top: 35.75%;
   position: absolute;
   width: 100%;
-  justify-content: space-around;
+}
+
+.player-state svg {
+  width: 32px;
+  height: 32px;
 }
 
 .state-btn {
@@ -125,7 +124,7 @@ body {
   bottom: 0;
   left: 0;
   margin: 0;
-  padding: 5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   background: linear-gradient(to top, #000000b8 -100%, transparent);
   box-sizing: border-box;
@@ -138,11 +137,16 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.controls svg {
+  width: 22px;
+  height: 22px;
+}
+
 .duration {
   position: relative;
   width: 100%;
   height: 8px;
-  background: #62626274;
+  background: #F9F7F190;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -155,7 +159,7 @@ body {
   height: 100%;
   position: absolute;
   inset: 0;
-  background-color: #ff6a0045;
+  background-color: #F9F7F160;
   z-index: 9;
   width: 0;
 }
@@ -164,7 +168,7 @@ body {
   height: 100%;
   position: absolute;
   inset: 0;
-  background: #ffffff9a;
+  background: #FFFFFF9A;
   z-index: 99;
   display: flex;
   align-items: center;
@@ -197,7 +201,7 @@ body {
   height: 100%;
   position: absolute;
   inset: 0;
-  background: #ff6a00;
+  background: #38D7E3;
   z-index: 999;
   display: flex;
   align-items: center;
@@ -207,10 +211,10 @@ body {
 .current-time::before {
   content: "";
   position: absolute;
-  right: calc((-25px / 2));
-  background: #ff6a00;
-  width: 25px;
-  height: 25px;
+  right: calc((-24px / 2));
+  background: #38D7E3;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   transition: all 0.2s;
   visibility: hidden;
@@ -350,7 +354,7 @@ body {
   margin-block-start: 0;
   margin-block-end: 0;
   position: absolute;
-  bottom: 4.5rem;
+  bottom: 4.0rem;
   transition: all 0.2s;
   background: rgba(28, 28, 28, 0.9);
   transform: scaleY(0);

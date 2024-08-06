@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Select the video player container with the new class
   const videoContainer = document.querySelector('.nexos-video-player');
   const videoSrc = videoContainer.getAttribute('data-src');
   const videoTitle = videoContainer.getAttribute('data-title');
@@ -7,17 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create the video element
   const videoElement = document.createElement('video');
   videoElement.id = 'video';
-  videoElement.disableRemotePlayback = true; // or videoElement.setAttribute('disableRemotePlayback', ''); if you need to support older browsers
+  videoElement.disableRemotePlayback = true;
+  videoElement.setAttribute('disableRemotePlayback', '');
   videoElement.src = videoSrc;
+  videoContainer.appendChild(videoElement);
 
   // Set the video title text
   const videoinfo = document.createElement('h4');
   videoinfo.className = 'video-title';
   videoinfo.textContent = videoTitle;
+  videoContainer.appendChild(videoinfo);
 
   // Create a new <span> element for the loader
   const loaderspn = document.createElement('span');
   loaderspn.className = 'custom-loader';
+  videoContainer.appendChild(loaderspn);
 
   // Create the player state container <div>
   const playerState = document.createElement('div');
@@ -26,22 +29,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create and configure the backward button
   const backwardButton = document.createElement('span');
   backwardButton.className = 'state-btn state-backward';
-  backwardButton.innerHTML = `<ion-icon name="play-back-outline"></ion-icon><span class="backward-duration">5</span>`;
+  backwardButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M480 145.52v221c0 13.28-13 21.72-23.63 15.35L267.5 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113C467 123.8 480 132.24 480 145.52zM251.43 145.52v221c0 13.28-13 21.72-23.63 15.35L38.93 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113c10.64-6.4 23.63 2.04 23.63 15.32z"/></svg><span class="backward-duration">5</span>`;
+  playerState.appendChild(backwardButton);
 
   // Create and configure the main play/pause button
   const mainStateButton = document.createElement('span');
   mainStateButton.className = 'main-state state-btn';
-  mainStateButton.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
+  mainStateButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg>`;
+  playerState.appendChild(mainStateButton);
 
   // Create and configure the forward button
   const forwardButton = document.createElement('span');
   forwardButton.className = 'state-btn state-forward';
-  forwardButton.innerHTML = `<span class="forward-duration">5</span><ion-icon name="play-forward-outline"></ion-icon>`;
+  forwardButton.innerHTML = `<span class="forward-duration">5</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113C45 123.8 32 132.24 32 145.52zM260.57 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113c-10.64-6.47-23.63 1.97-23.63 15.25z"/></svg>`;
+  playerState.appendChild(forwardButton);
 
   // Append buttons to player state container
-  playerState.appendChild(backwardButton);
-  playerState.appendChild(mainStateButton);
-  playerState.appendChild(forwardButton);
+  videoContainer.appendChild(playerState);
 
   // Create the controls container <div>
   const controlsdiv = document.createElement('div');
@@ -50,89 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create and configure the duration container
   const durationDiv = document.createElement('div');
   durationDiv.className = 'duration';
-  durationDiv.innerHTML = `
-            <div class="current-time"></div>
-            <div class="hover-time">
-                <span class="hover-duration"></span>
-            </div>
-            <div class="buffer"></div>
-        `;
+  durationDiv.innerHTML = `<div class="current-time"></div><div class="hover-time"><span class="hover-duration"></span></div><div class="buffer"></div>`;
+  controlsdiv.appendChild(durationDiv);
 
   // Create and configure the button controls container
   const btnControls = document.createElement('div');
   btnControls.className = 'btn-controls';
-  btnControls.innerHTML = `
-            <div class="btn-con">
-                <span class="play-pause control-btn">
-                    <ion-icon name="play-outline"></ion-icon>
-                </span>
-                <span class="volume">
-                    <span class="mute-unmute control-btn">
-                        <ion-icon name="volume-high-outline"></ion-icon>
-                    </span>
-                    <div class="max-vol">
-                        <div class="current-vol"></div>
-                    </div>
-                </span>
-                <span class="time-container">
-                    <span class="current-duration">0:00</span>
-                    <span>/</span>
-                    <span class="total-duration">0:00</span>
-                </span>
-            </div>
-            <div class="right-controls">
-                <span class="backward control-btn" title="5 backward">
-                    <ion-icon name="play-back-outline"></ion-icon>
-                </span>
-                <span class="forward control-btn" title="5 forward">
-                    <ion-icon name="play-forward-outline"></ion-icon>
-                </span>
-                <span class="mini-player control-btn">
-                    <ion-icon name="albums-outline"></ion-icon>
-                </span>
-                <span class="settings control-btn">
-                    <span class="setting-btn">
-                        <ion-icon name="options-outline"></ion-icon>
-                    </span>
-                    <ul class="setting-menu">
-                        <li data-value="0.25">0.25x</li>
-                        <li data-value="0.5">0.5x</li>
-                        <li data-value="0.75">0.75x</li>
-                        <li data-value="1" class="speed-active">1x</li>
-                        <li data-value="1.25">1.25x</li>
-                        <li data-value="1.5">1.5x</li>
-                        <li data-value="1.75">1.75x</li>
-                        <li data-value="2">2x</li>
-                    </ul>
-                </span>
-                <span class="theater-btn control-btn">
-                    <span class="theater-default">
-                        <ion-icon name="tablet-landscape-outline"></ion-icon>
-                    </span>
-                    <span class="theater-active">
-                        <ion-icon name="tv-outline"></ion-icon>
-                    </span>
-                </span>
-                <span class="fullscreen-btn control-btn" title="fullscreen">
-                    <span class="full">
-                        <ion-icon name="scan-outline"></ion-icon>
-                    </span>
-                    <span class="contract">
-                        <ion-icon name="contract-outline"></ion-icon>
-                    </span>
-                </span>
-            </div>
-        `;
-
-  // Append the duration and button controls to the controls container
-  controlsdiv.appendChild(durationDiv);
+  btnControls.innerHTML = `<div class="btn-con"><span class="play-pause control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg></span><span class="volume"><span class="mute-unmute control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M126 192H56a8 8 0 00-8 8v112a8 8 0 008 8h69.65a15.93 15.93 0 0110.14 3.54l91.47 74.89A8 8 0 00240 392V120a8 8 0 00-12.74-6.43l-91.47 74.89A15 15 0 01126 192zM320 320c9.74-19.38 16-40.84 16-64 0-23.48-6-44.42-16-64M368 368c19.48-33.92 32-64.06 32-112s-12-77.74-32-112M416 416c30-46 48-91.43 48-160s-18-113-48-160"/></svg></span><div class="max-vol"><div class="current-vol"></div></div></span><span class="time-container"><span class="current-duration">0:00</span><span>/</span><span class="total-duration">0:00</span></span></div><div class="right-controls"><span class="backward control-btn" title="5 backward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M480 145.52v221c0 13.28-13 21.72-23.63 15.35L267.5 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113C467 123.8 480 132.24 480 145.52zM251.43 145.52v221c0 13.28-13 21.72-23.63 15.35L38.93 268.8c-9.24-5.53-9.24-20.07 0-25.6l188.87-113c10.64-6.4 23.63 2.04 23.63 15.32z"/></svg></span><span class="forward control-btn" title="5 forward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113C45 123.8 32 132.24 32 145.52zM260.57 145.52v221c0 13.28 13 21.72 23.63 15.35l188.87-113c9.24-5.53 9.24-20.07 0-25.6l-188.87-113c-10.64-6.47-23.63 1.97-23.63 15.25z"/></svg></span><span class="mini-player control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87"/><path d="M144 80h224M112 128h288"/></svg></span><span class="settings control-btn"><span class="setting-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M368 128h80M64 128h240M368 384h80M64 384h240M208 256h240M64 256h80"/><circle cx="336" cy="128" r="32"/><circle cx="176" cy="256" r="32"/><circle cx="336" cy="384" r="32"/></svg></span><ul class="setting-menu"><li data-value="0.25">0.25x</li><li data-value="0.5">0.5x</li><li data-value="0.75">0.75x</li><li data-value="1" class="speed-active">1x</li><li data-value="1.25">1.25x</li><li data-value="1.5">1.5x</li><li data-value="1.75">1.75x</li><li data-value="2">2x</li></ul></span><span class="theater-btn control-btn"><span class="theater-default"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><rect x="80" y="16" width="352" height="480" rx="48" ry="48" transform="rotate(-90 256 256)"/></svg></span><span class="theater-active"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="32" y="96" width="448" height="272" rx="32.14" ry="32.14"/><path d="M128 416h256"/></svg></span></span><span class="fullscreen-btn control-btn" title="fullscreen"><span class="full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M336 448h56a56 56 0 0056-56v-56M448 176v-56a56 56 0 00-56-56h-56M176 448h-56a56 56 0 01-56-56v-56M64 176v-56a56 56 0 0156-56h56"/></svg></span><span class="contract"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M304 416V304h112M314.2 314.23L432 432M208 96v112H96M197.8 197.77L80 80M416 208H304V96M314.23 197.8L432 80M96 304h112v112M197.77 314.2L80 432"/></svg></span></span></div>`;
   controlsdiv.appendChild(btnControls);
 
-  // Append loader, player state, and controls to video container
-  videoContainer.appendChild(videoElement);
-  videoContainer.appendChild(loaderspn);
-  videoContainer.appendChild(videoinfo);
-  videoContainer.appendChild(playerState);
+  // Append the duration and button controls to the controls container
   videoContainer.appendChild(controlsdiv);
 
   const video = document.querySelector("video");
@@ -145,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const totalDuration = document.querySelector(".total-duration");
   const currentDuration = document.querySelector(".current-duration");
   const controls = document.querySelector(".controls");
-  // const videoContainer = document.querySelector(".nexos-video-player");
   const currentVol = document.querySelector(".current-vol");
   const totalVol = document.querySelector(".max-vol");
   const mainState = document.querySelector(".main-state");
@@ -312,25 +242,25 @@ document.addEventListener('DOMContentLoaded', function() {
       controls.classList.add("show-controls");
       videoinfo.classList.add("show-controls");
       mainState.classList.add("show-state");
-      handleMainStateIcon(`<ion-icon name="play-outline"></ion-icon>`);
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg>`);
     }
   }
 
   function play() {
     video.play();
     isPlaying = true;
-    playPause.innerHTML = `<ion-icon name="pause-outline"></ion-icon>`;
+    playPause.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M176 96h16v320h-16zM320 96h16v320h-16z"/></svg>`;
     mainState.classList.remove("show-state");
-    handleMainStateIcon(`<ion-icon name="pause-outline"></ion-icon>`);
-    // watchProgress();
+    handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M176 96h16v320h-16zM320 96h16v320h-16z"/></svg>`);
+    watchProgress();
   }
 
-  // function watchProgress() {
-  //   if (isPlaying) {
-  //     requestAnimationFrame(watchProgress);
-  //     handleProgressBar();
-  //   }
-  // }
+  function watchProgress() {
+    if (isPlaying) {
+      requestAnimationFrame(watchProgress);
+      handleProgressBar();
+    }
+  }
 
   video.ontimeupdate = handleProgressBar;
 
@@ -342,16 +272,15 @@ document.addEventListener('DOMContentLoaded', function() {
   function pause() {
     video.pause();
     isPlaying = false;
-    playPause.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
+    playPause.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg>`;
     controls.classList.add("show-controls");
     videoinfo.classList.add("show-controls");
     mainState.classList.add("show-state");
-    handleMainStateIcon(`<ion-icon name="play-outline"></ion-icon>`);
+    handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg>`);
     if (video.ended) {
       currentTime.style.width = 100 + "%";
     }
   }
-
 
   function handleWaiting() {
     loader.style.display = "unset";
@@ -405,15 +334,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!muted) {
       video.volume = 0;
       muted = true;
-      muteUnmute.innerHTML = `<ion-icon name="volume-mute-outline"></ion-icon>`;
-      handleMainStateIcon(`<ion-icon name="volume-mute-outline"></ion-icon>`);
+      muteUnmute.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 432L64 80"/><path d="M224 136.92v33.8a4 4 0 001.17 2.82l24 24a4 4 0 006.83-2.82v-74.15a24.53 24.53 0 00-12.67-21.72 23.91 23.91 0 00-25.55 1.83 8.27 8.27 0 00-.66.51l-31.94 26.15a4 4 0 00-.29 5.92l17.05 17.06a4 4 0 005.37.26zM224 375.08l-78.07-63.92a32 32 0 00-20.28-7.16H64v-96h50.72a4 4 0 002.82-6.83l-24-24a4 4 0 00-2.82-1.17H56a24 24 0 00-24 24v112a24 24 0 0024 24h69.76l91.36 74.8a8.27 8.27 0 00.66.51 23.93 23.93 0 0025.85 1.69A24.49 24.49 0 00256 391.45v-50.17a4 4 0 00-1.17-2.82l-24-24a4 4 0 00-6.83 2.82zM125.82 336zM352 256c0-24.56-5.81-47.88-17.75-71.27a16 16 0 00-28.5 14.54C315.34 218.06 320 236.62 320 256q0 4-.31 8.13a8 8 0 002.32 6.25l19.66 19.67a4 4 0 006.75-2A146.89 146.89 0 00352 256zM416 256c0-51.19-13.08-83.89-34.18-120.06a16 16 0 00-27.64 16.12C373.07 184.44 384 211.83 384 256c0 23.83-3.29 42.88-9.37 60.65a8 8 0 001.9 8.26l16.77 16.76a4 4 0 006.52-1.27C410.09 315.88 416 289.91 416 256z"/><path d="M480 256c0-74.26-20.19-121.11-50.51-168.61a16 16 0 10-27 17.22C429.82 147.38 448 189.5 448 256c0 47.45-8.9 82.12-23.59 113a4 4 0 00.77 4.55L443 391.39a4 4 0 006.4-1C470.88 348.22 480 307 480 256z"/></svg>`;
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 432L64 80"/><path d="M224 136.92v33.8a4 4 0 001.17 2.82l24 24a4 4 0 006.83-2.82v-74.15a24.53 24.53 0 00-12.67-21.72 23.91 23.91 0 00-25.55 1.83 8.27 8.27 0 00-.66.51l-31.94 26.15a4 4 0 00-.29 5.92l17.05 17.06a4 4 0 005.37.26zM224 375.08l-78.07-63.92a32 32 0 00-20.28-7.16H64v-96h50.72a4 4 0 002.82-6.83l-24-24a4 4 0 00-2.82-1.17H56a24 24 0 00-24 24v112a24 24 0 0024 24h69.76l91.36 74.8a8.27 8.27 0 00.66.51 23.93 23.93 0 0025.85 1.69A24.49 24.49 0 00256 391.45v-50.17a4 4 0 00-1.17-2.82l-24-24a4 4 0 00-6.83 2.82zM125.82 336zM352 256c0-24.56-5.81-47.88-17.75-71.27a16 16 0 00-28.5 14.54C315.34 218.06 320 236.62 320 256q0 4-.31 8.13a8 8 0 002.32 6.25l19.66 19.67a4 4 0 006.75-2A146.89 146.89 0 00352 256zM416 256c0-51.19-13.08-83.89-34.18-120.06a16 16 0 00-27.64 16.12C373.07 184.44 384 211.83 384 256c0 23.83-3.29 42.88-9.37 60.65a8 8 0 001.9 8.26l16.77 16.76a4 4 0 006.52-1.27C410.09 315.88 416 289.91 416 256z"/><path d="M480 256c0-74.26-20.19-121.11-50.51-168.61a16 16 0 10-27 17.22C429.82 147.38 448 189.5 448 256c0 47.45-8.9 82.12-23.59 113a4 4 0 00.77 4.55L443 391.39a4 4 0 006.4-1C470.88 348.22 480 307 480 256z"/></svg>`);
       totalVol.classList.remove("show");
     } else {
       video.volume = volumeVal;
       muted = false;
       totalVol.classList.add("show");
-      handleMainStateIcon(`<ion-icon name="volume-high-outline"></ion-icon>`);
-      muteUnmute.innerHTML = `<ion-icon name="volume-high-outline"></ion-icon>`;
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M126 192H56a8 8 0 00-8 8v112a8 8 0 008 8h69.65a15.93 15.93 0 0110.14 3.54l91.47 74.89A8 8 0 00240 392V120a8 8 0 00-12.74-6.43l-91.47 74.89A15 15 0 01126 192zM320 320c9.74-19.38 16-40.84 16-64 0-23.48-6-44.42-16-64M368 368c19.48-33.92 32-64.06 32-112s-12-77.74-32-112M416 416c30-46 48-91.43 48-160s-18-113-48-160"/></svg>`);
+      muteUnmute.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M126 192H56a8 8 0 00-8 8v112a8 8 0 008 8h69.65a15.93 15.93 0 0110.14 3.54l91.47 74.89A8 8 0 00240 392V120a8 8 0 00-12.74-6.43l-91.47 74.89A15 15 0 01126 192zM320 320c9.74-19.38 16-40.84 16-64 0-23.48-6-44.42-16-64M368 368c19.48-33.92 32-64.06 32-112s-12-77.74-32-112M416 416c30-46 48-91.43 48-160s-18-113-48-160"/></svg>`;
     }
   }
 
@@ -443,18 +372,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-
-  //  function toggleMainState(e) {
-  //  e.stopPropagation();
-  //  if (!e.path.includes(controls)) {
-  //     if (!isPlaying) {
-  //     play();
-  //    } else {
-  //      pause();
-  //     }
-  //  }
-  // }
-
   function handleVolume(e) {
     const totalVolRect = totalVol.getBoundingClientRect();
     currentVol.style.width =
@@ -478,9 +395,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       videoContainer.requestFullscreen();
-      handleMainStateIcon(`<ion-icon name="scan-outline"></ion-icon>`);
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M336 448h56a56 56 0 0056-56v-56M448 176v-56a56 56 0 00-56-56h-56M176 448h-56a56 56 0 01-56-56v-56M64 176v-56a56 56 0 0156-56h56"/></svg>`);
     } else {
-      handleMainStateIcon(` <ion-icon name="contract-outline"></ion-icon>`);
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M304 416V304h112M314.2 314.23L432 432M208 96v112H96M197.8 197.77L80 80M416 208H304V96M314.23 197.8L432 80M96 304h112v112M197.77 314.2L80 432"/></svg>`);
       document.exitFullscreen();
     }
   }
@@ -524,10 +441,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function handleMainSateAnimationEnd() {
     mainState.classList.remove("animate-state");
     if (!isPlaying) {
-      mainState.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
+      mainState.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"/></svg>`;
     }
     if (document.pictureInPictureElement) {
-      mainState.innerHTML = ` <ion-icon name="tv-outline"></ion-icon>`;
+      mainState.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="32" y="96" width="448" height="272" rx="32.14" ry="32.14"/><path d="M128 416h256"/></svg>`;
     }
   }
 
@@ -535,20 +452,20 @@ document.addEventListener('DOMContentLoaded', function() {
     videoContainer.classList.toggle("theater");
     if (videoContainer.classList.contains("theater")) {
       handleMainStateIcon(
-        `<ion-icon name="tablet-landscape-outline"></ion-icon>`
+        `<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><rect x="80" y="16" width="352" height="480" rx="48" ry="48" transform="rotate(-90 256 256)"/></svg>`
       );
     } else {
-      handleMainStateIcon(`<ion-icon name="tv-outline"></ion-icon>`);
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="32" y="96" width="448" height="272" rx="32.14" ry="32.14"/><path d="M128 416h256"/></svg>`);
     }
   }
 
   function toggleMiniPlayer() {
     if (document.pictureInPictureElement) {
       document.exitPictureInPicture();
-      handleMainStateIcon(`<ion-icon name="magnet-outline"></ion-icon>`);
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M421.83 293.82A144 144 0 00218.18 90.17M353.94 225.94a48 48 0 00-67.88-67.88"/><path d="M192 464v-48M90.18 421.82l33.94-33.94M48 320h48"/><path d="M286.06 158.06L172.92 271.19a32 32 0 01-45.25 0L105 248.57a32 32 0 010-45.26L218.18 90.17M421.83 293.82L308.69 407a32 32 0 01-45.26 0l-22.62-22.63a32 32 0 010-45.26l113.13-113.17M139.6 169.98l67.88 67.89M275.36 305.75l67.89 67.88"/></svg>`);
     } else {
       video.requestPictureInPicture();
-      handleMainStateIcon(`<ion-icon name="albums-outline"></ion-icon>`);
+      handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87"/><path d="M144 80h224M112 128h288"/></svg>`);
     }
   }
 
