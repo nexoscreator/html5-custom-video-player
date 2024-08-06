@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create and configure the duration container
   const durationDiv = document.createElement('div');
   durationDiv.className = 'duration';
-  durationDiv.innerHTML = `<div class="current-time"></div><div class="hover-time<span class="hover-duration"></span></div><div class="buffer"></div>`;
+  durationDiv.innerHTML = `<div class="current-time"></div><div class="hover-time"><span class="hover-duration"></span></div><div class="buffer"></div>`;
 
   // Create and configure the button controls container
   const btnControls = document.createElement('div');
@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const totalDuration = document.querySelector(".total-duration");
   const currentDuration = document.querySelector(".current-duration");
   const controls = document.querySelector(".controls");
-  // const videoContainer = document.querySelector(".nexos-video-player");
   const currentVol = document.querySelector(".current-vol");
   const totalVol = document.querySelector(".max-vol");
   const mainState = document.querySelector(".main-state");
@@ -255,15 +254,15 @@ document.addEventListener('DOMContentLoaded', function() {
     playPause.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M176 96h16v320h-16zM320 96h16v320h-16z"/></svg>`;
     mainState.classList.remove("show-state");
     handleMainStateIcon(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M176 96h16v320h-16zM320 96h16v320h-16z"/></svg>`);
-    // watchProgress();
+    watchProgress();
   }
 
-  // function watchProgress() {
-  //   if (isPlaying) {
-  //     requestAnimationFrame(watchProgress);
-  //     handleProgressBar();
-  //   }
-  // }
+  function watchProgress() {
+    if (isPlaying) {
+      requestAnimationFrame(watchProgress);
+      handleProgressBar();
+    }
+  }
 
   video.ontimeupdate = handleProgressBar;
 
@@ -284,7 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
       currentTime.style.width = 100 + "%";
     }
   }
-
 
   function handleWaiting() {
     loader.style.display = "unset";
@@ -375,18 +373,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
-
-
-  //  function toggleMainState(e) {
-  //  e.stopPropagation();
-  //  if (!e.path.includes(controls)) {
-  //     if (!isPlaying) {
-  //     play();
-  //    } else {
-  //      pause();
-  //     }
-  //  }
-  // }
 
   function handleVolume(e) {
     const totalVolRect = totalVol.getBoundingClientRect();
