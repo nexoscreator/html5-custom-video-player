@@ -9,11 +9,11 @@
 
 ![image](.github/preview.png)
 
-This project features a custom video player built using plain JavaScript. It includes various functionalities such as play/pause control, volume adjustment, playback speed settings, fullscreen toggle, and more.
+> This project features a custom video player built using plain JavaScript. It includes various functionalities such as play/pause control, volume adjustment, playback speed settings, fullscreen toggle, and more.
 
 ---
 
-### Features
+### Features ✨
 
 - Responsive design for various screen sizes.
 - Support for various video formats.
@@ -24,30 +24,7 @@ This project features a custom video player built using plain JavaScript. It inc
 
 ---
 
-## Keyboard Shortcuts
-
-This custom video player supports the following keyboard shortcuts to enhance your video playback experience:
-
-| **Shortcut Key** | **Action**               | **Description**                                  |
-|------------------|--------------------------|--------------------------------------------------|
-| `f`              | Toggle Fullscreen        | Enter or exit fullscreen mode.                  |
-| `→` (Right Arrow) | Forward                   | Skip the video forward.                         |
-| `←` (Left Arrow)  | Backward                  | Rewind the video.                               |
-| `t`              | Toggle Theater Mode      | Switch between normal and theater modes.        |
-| `i`              | Toggle Mini Player       | Activate or deactivate mini player view.        |
-| `m`              | Toggle Mute/Unmute       | Mute or unmute the video.                       |
-| `+`              | Increase Playback Speed  | Increase the playback speed.                    |
-| `-`              | Decrease Playback Speed  | Decrease the playback speed.                    |
-
-### Links
-
-[![Web Demo](https://img.shields.io/badge/Web-Demo-blue?style=for-the-badge&logo=google-chrome)](https://nexoscreator.github.io/html5-custom-video-player)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-green?style=for-the-badge&logo=github)](https://github.com/nexoscreator/html5-custom-video-player)
-[![YouTube Video](https://img.shields.io/badge/YouTube-Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/rMnDe0iEGRs?si=B2viVesOhHYusbBG)
-
----
-
-### Installation
+### Installation 📦
 
 Provide step-by-step instructions on how to install and set up your project.
 
@@ -77,6 +54,31 @@ Provide step-by-step instructions on how to install and set up your project.
 
 ---
 
+### Links 🔗
+
+[![Web Demo](https://img.shields.io/badge/Web-Demo-blue?style=for-the-badge&logo=google-chrome)](https://nexoscreator.github.io/html5-custom-video-player)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-green?style=for-the-badge&logo=github)](https://github.com/nexoscreator/html5-custom-video-player)
+[![YouTube Video](https://img.shields.io/badge/YouTube-Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/rMnDe0iEGRs?si=B2viVesOhHYusbBG)
+
+---
+
+## Keyboard Shortcuts
+
+This custom video player supports the following keyboard shortcuts to enhance your video playback experience:
+
+| **Shortcut Key** | **Action**               | **Description**                                  |
+|------------------|--------------------------|--------------------------------------------------|
+| `f`              | Toggle Fullscreen        | Enter or exit fullscreen mode.                  |
+| `→` (Right Arrow) | Forward                   | Skip the video forward.                         |
+| `←` (Left Arrow)  | Backward                  | Rewind the video.                               |
+| `t`              | Toggle Theater Mode      | Switch between normal and theater modes.        |
+| `i`              | Toggle Mini Player       | Activate or deactivate mini player view.        |
+| `m`              | Toggle Mute/Unmute       | Mute or unmute the video.                       |
+| `+`              | Increase Playback Speed  | Increase the playback speed.                    |
+| `-`              | Decrease Playback Speed  | Decrease the playback speed.                    |
+
+---
+
 ### Customization
 
 Customize the player by modifying the CSS styles in styles.css and the JavaScript in player.js.
@@ -95,20 +97,26 @@ Adjust player functionality by editing the `video-player.js` file. You can updat
 
 ---
 
-### Contributing
-Contributions are welcome! If you have any suggestions, bug fixes, or improvements, feel free to open an issue or submit a pull request.
-If you'd like to contribute to this project, please follow these ste
+### Contributing 🤝
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/improvement`).
-3. Make your changes and commit them (`git commit -m 'Add feature/improvement'`).
-4. Push to the branch (`git push origin feature/improvement`).
-5. Open a Pull Request.
+We love contributions! Here's how you can help:
 
-Please check the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details.
+1. 🍴 Fork the repository
+2. 🌿 Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. 💾 Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. 🚀 Push to the branch (`git push origin feature/AmazingFeature`)
+5. 🔃 Open a Pull Request
+
+Check out our [Contribution Guidelines](CONTRIBUTING.md) for more details.
 
 ---
 
-### License
+### License 📄
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [License](LICENSE) file for details.
+
+---
+
+<p align="center">
+  Created with ❤️ by <a href="https://github.com/nexoscreator">@nexoscreator</a>
+</p>
