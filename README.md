@@ -1,60 +1,107 @@
 ![GitHub Pages](https://img.shields.io/github/deployments/nexoscreator/html5-custom-video-player/github-pages.svg?style=flat-square&color=cyan)
 ![GitHub Release](https://img.shields.io/github/v/release/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
 ![GitHub License](https://img.shields.io/github/license/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
-![GitHub code size](https://img.shields.io/github/languages/code-size/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
+![GitHub code](https://img.shields.io/github/languages/code-size/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
 
 ---
 
-# Custom HTML5 Video Player
+# 🎥 Custom HTML5 Video Player
 
 ![image](.github/preview.png)
 
-> This project features a custom video player built using plain JavaScript. It includes various functionalities such as play/pause control, volume adjustment, playback speed settings, fullscreen toggle, and more.
+> A **lightweight, customizable, and feature-rich** video player built using plain JavaScript and CSS. Includes essential video controls such as **play/pause, volume adjustment, speed control, fullscreen mode, theater mode, mini-player, and more**.
 
 ---
 
-### Features ✨
+### ✨ Features
 
-- Responsive design for various screen sizes.
-- Support for various video formats.
-- Touch and click navigation support.
-- Keyboard Shortcut Key Support
-- Customizable player controls.
-- Play/Pause Control, Volume Control, Playback Controls, Fullscreen Mode, Playback Speed Adjustment, Video Navigation, Mini Player and Theater Mode, Loading Indicator.
+- **Responsive Design**: Works seamlessly on desktop & mobile devices.
+- **Supports Multiple Video Formats**: (MP4, WebM, Ogg, etc.)
+- **Keyboard Shortcuts**: for easy navigation.
+- **Custom Controls**: Play/Pause, Volume, Speed Control, Fullscreen, Mini Player, Theater Mode.
+- **Loading Indicator**: for better UX.
+- **Touch & Click Support**: for mobile devices.
+- **Customizable**: Easily modify styles & functionality.
 
 ---
 
-### Installation 📦
-
-Provide step-by-step instructions on how to install and set up your project.
+### 📥 Installation
 
 1. **Include the Video Player in HTML**
 
    Use the following HTML to include the video player in your page:
 
    ```html
-   <div class="nexos-video-player" data-src="path/to/your/video.mp4" data-title="Video Title"></div>
+   <div
+     class="nex-video-player"
+     data-src="path/to/your/video.mp4"
+     data-title="Video Title"
+   ></div>
    ```
+
+   > **Note:** Replace `"path/to/your/video.mp4"` with your actual video file URL and update the `"Video Title"`.
 
 2. **Link CSS Styles**
 
    Include the necessary CSS to style the video player and controls.
-   
+
    ```html
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.3/video-player.min.css">
+   <link
+     rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.5.3/video-player.min.css"
+   />
    ```
 
 3. **Link the JavaScript**
 
    Add the JavaScript code cdn link provided below to the functionality of the video player.
-   
+
    ```html
-   <script src="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.0.3/video-player.min.js" defer></script>
+   <script
+     src="https://cdn.jsdelivr.net/gh/nexoscreator/html5-custom-video-player@v0.5.3/video-player.min.js"
+     defer
+   ></script>
    ```
 
 ---
 
-### Links 🔗
+## 🎯 Keyboard Shortcuts
+
+This custom video player supports the following keyboard shortcuts to enhance your video playback experience:
+
+| Shortcut Key      | Action              | Description                              |
+| ----------------- | ------------------- | ---------------------------------------- |
+| `F`               | Fullscreen Toggle   | Enter or exit fullscreen mode.           |
+| `→` (Right Arrow) | Forward             | Skip the video forward.                  |
+| `←` (Left Arrow)  | Backward            | Rewind the video.                        |
+| `T`               | Toggle Theater Mode | Switch between normal and theater modes. |
+| `I`               | Mini Player Mode    | Activate or deactivate mini player view. |
+| `M`               | Mute/Unmute         | Mute or unmute the video.                |
+| `+`               | Increase Speed      | Increase playback speed.                 |
+| `-`               | Decrease Speed      | Decrease playback speed.                 |
+
+---
+
+### 🎨 Customization
+
+You can customize the **CSS styles** and **JavaScript functionality** according to your needs.
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/nexoscreator/html5-custom-video-player.git
+   cd html5-custom-video-player
+   ```
+
+2. **Customize CSS:**
+   Edit the `video-player.css` file to change the styles.
+
+3. **Customize JavaScript:**
+   Customize the player controls by modifying `video-player.js`. You can update controls, navigation, or error handling as needed.
+
+---
+
+### 🔗 Useful Links
 
 [![Web Demo](https://img.shields.io/badge/Web-Demo-blue?style=for-the-badge&logo=google-chrome)](https://nexoscreator.github.io/html5-custom-video-player)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-green?style=for-the-badge&logo=github)](https://github.com/nexoscreator/html5-custom-video-player)
@@ -62,44 +109,9 @@ Provide step-by-step instructions on how to install and set up your project.
 
 ---
 
-## Keyboard Shortcuts
+### 🤝 Contributing
 
-This custom video player supports the following keyboard shortcuts to enhance your video playback experience:
-
-| **Shortcut Key** | **Action**               | **Description**                                  |
-|------------------|--------------------------|--------------------------------------------------|
-| `f`              | Toggle Fullscreen        | Enter or exit fullscreen mode.                  |
-| `→` (Right Arrow) | Forward                   | Skip the video forward.                         |
-| `←` (Left Arrow)  | Backward                  | Rewind the video.                               |
-| `t`              | Toggle Theater Mode      | Switch between normal and theater modes.        |
-| `i`              | Toggle Mini Player       | Activate or deactivate mini player view.        |
-| `m`              | Toggle Mute/Unmute       | Mute or unmute the video.                       |
-| `+`              | Increase Playback Speed  | Increase the playback speed.                    |
-| `-`              | Decrease Playback Speed  | Decrease the playback speed.                    |
-
----
-
-### Customization
-
-Customize the player by modifying the CSS styles in styles.css and the JavaScript in player.js.
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/nexoscreator/html5-custom-video-player.git
-   cd html5-custom-video-player
-   ```
-
-2. **Customize CSS:**
-Customize the player styles by modifying the `video-player.css` file.
-
-3.  **Customize JavaScript:**
-Adjust player functionality by editing the `video-player.js` file. You can update controls, navigation, or error handling as needed.
-
----
-
-### Contributing 🤝
-
-We love contributions! Here's how you can help:
+We ❤️ contributions! Follow these steps to contribute:
 
 1. 🍴 Fork the repository
 2. 🌿 Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -113,9 +125,11 @@ Check out our [Contribution Guidelines](CONTRIBUTING.md) for more details.
 
 ### License 📄
 
-This project is licensed under the MIT License - see the [License](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
+
+### 🌟 Star this project if you find it useful!
 
 <p align="center">
   Created with ❤️ by <a href="https://github.com/nexoscreator">@nexoscreator</a>
