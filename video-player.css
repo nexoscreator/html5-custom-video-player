@@ -20,7 +20,7 @@
   padding-top: 56.25%;
   background: hsl(180, 15%, 10%);
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 2px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 /* Video Element */
