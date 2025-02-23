@@ -1,0 +1,49 @@
+name: "❓ Support Request"
+description: "Need help? Ask a question about the project"
+title: "[Support]: <short description>"
+labels: ["question", "support"]
+assignees: "nexoscreator"
+body:
+  - type: textarea
+    attributes:
+      label: "❓ Question or Issue"
+      description: "A clear and concise description of your question or issue."
+      placeholder: |
+        > Example:  
+        > How can I deploy Custom HTML5 Video Player to **Vercel**?
+  - type: textarea
+    attributes:
+      label: "🛠️ What Have You Tried?"
+      description: "Describe any steps you've already taken to solve the issue."
+      placeholder: |
+        - ✅ Read the [Documentation](https://github.com/nexoscreator/html5-custom-video-player/wiki)  
+        - ✅ Checked [Existing Issues](https://github.com/nexoscreator/html5-custom-video-player/issues)  
+        - ✅ Tried troubleshooting on my own
+  - type: textarea
+    attributes:
+      label: "📸 Screenshots or Code Snippets (If Applicable)"
+      description: "If your issue involves errors, UI issues, or logs, please attach screenshots or code."
+      placeholder: |
+        ```bash
+        # Example: Terminal error logs
+        ERROR: Module not found: Can't resolve 'module-name'
+        ```
+  - type: textarea
+    attributes:
+      label: "📄 Additional Context"
+  - type: checkboxes
+    attributes:
+      label: "Check the following:"
+      options:
+        - label: "I have searched the **existing discussions** before opening this request."
+          required: true
+        - label: "I have **described my question/issue clearly**."
+          required: true
+        - label: "I am willing to **update documentation** if needed _(optional)_."
+          required: false
+  - type: markdown
+    attributes:
+      value: "💡 **Need faster help?** Join our **Discord community**: [Join Here](https://discord.gg/H7pVc9aUK2)"
+  - type: markdown
+    attributes:
+      value: "💖 **Thank you for using Custom HTML5 Video Player!** 🚀"

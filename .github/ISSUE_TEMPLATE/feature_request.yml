@@ -1,0 +1,39 @@
+name: "🚀 Feature Request"
+description: "Suggest an idea or improvement"
+title: "[Feature]: <short description>"
+labels: ["enhancement", "idea"]
+assignees: "nexoscreator"
+body:
+  - type: textarea
+    attributes:
+      label: "💡 Description"
+      description: "Explain your feature request."
+  - type: textarea
+    attributes:
+      label: "🎯 Why Is This Feature Needed?"
+      description: "Explain how this feature will improve the project."
+  - type: textarea
+    attributes:
+      label: "⚙️ Implementation Ideas"
+      description: "If you have an idea, describe how this feature could be implemented."
+  - type: textarea
+    attributes:
+      label: "📄 Additional Info"
+      description: "Have you considered any alternative solutions"
+  - type: textarea
+    attributes:
+      label: "📸 Screenshots/Mockups (If Applicable)"
+      description: "Attach any visual references, UI mockups, or diagrams."
+  - type: checkboxes
+    attributes:
+      label: "Check the following:"
+      options:
+        - label: "I have searched **existing issues** to avoid duplicates."
+          required: true
+        - label: "I have provided **a clear and detailed request."
+          required: true
+        - label: "I am willing to **help implement this feature** _(optional)_."
+          required: false
+  - type: markdown
+    attributes:
+      value: "💖 **Thank you for suggesting improvements to Custom HTML5 Video Player!** 🚀"

@@ -1,0 +1,66 @@
+name: "🐞 Bug Report"
+description: "Report a problem or unexpected behavior"
+title: "[Bug]: <short description>"
+labels: ["bug", "needs-triage"]
+assignees: "nexoscreator"
+body:
+  - type: markdown
+    attributes:
+      value: "#"
+  - type: input
+    attributes:
+      label: "🔗 Related URL (if any)"
+      description: "Provide a link to the affected page or repo."
+      placeholder: "https://www.example.com/"
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: "📜 Description"
+      description: "Explain the issue in detail."
+      placeholder: "What happened? What did you expect?"
+  - type: textarea
+    attributes:
+      label: "🔍 Steps to Reproduce"
+      description: "How can we reproduce the bug?"
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error **unexpected behavior**
+  - type: textarea
+    attributes:
+      label: "💡 Expected Behavior"
+      description: "Describe what you expected to happen."
+      placeholder: |
+        > Example:
+        > When clicking the **dark mode button**, the theme should switch to dark.
+  - type: textarea
+    attributes:
+      label: "📷 Screenshots or Logs (If Applicable)"
+      description: "Add screenshots, GIFs, or console logs to help us understand the issue."
+  - type: dropdown
+    attributes:
+      label: "🖥 Environment Details"
+      description: "Provide details about your setup."
+      options:
+        - "Windows"
+        - "MacOS"
+        - "Linux"
+        - "Other"
+  - type: textarea
+    attributes:
+      label: "🧠 Possible Solution (Optional) "
+      description: "If you have an idea, suggest how to fix the bug."
+  - type: checkboxes
+    attributes:
+      label: "Check the following:"
+      options:
+        - label: "I have searched **existing issues** to avoid duplicates."
+          required: true
+        - label: "I have provided **steps to reproduce** the issue."
+          required: false
+        - label: "I am willing to **submit a PR to fix the bug** _(optional)_."
+          required: false
+  - type: markdown
+    attributes:
+      value: "💖 Thank you for helping improve Custom HTML5 Video Player! 🚀"

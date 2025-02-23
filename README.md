@@ -1,11 +1,11 @@
 ![GitHub Pages](https://img.shields.io/github/deployments/nexoscreator/html5-custom-video-player/github-pages.svg?style=flat-square&color=cyan)
 ![GitHub Release](https://img.shields.io/github/v/release/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
 ![GitHub License](https://img.shields.io/github/license/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
-![GitHub code](https://img.shields.io/github/languages/code-size/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
+![GitHub Code](https://img.shields.io/github/languages/code-size/nexoscreator/html5-custom-video-player.svg?style=flat-square&color=cyan)
 
 ---
 
-# 🎥 Custom HTML5 Video Player
+## 🎥 Custom HTML5 Video Player
 
 ![image](.github/preview.png)
 
@@ -13,7 +13,7 @@
 
 ---
 
-### ✨ Features
+## ✨ Features
 
 - **Responsive Design**: Works seamlessly on desktop & mobile devices.
 - **Supports Multiple Video Formats**: (MP4, WebM, Ogg, etc.)
@@ -25,7 +25,7 @@
 
 ---
 
-### 📥 Installation
+## 📥 Installation
 
 1. **Include the Video Player in HTML**
 
@@ -82,7 +82,7 @@ This custom video player supports the following keyboard shortcuts to enhance yo
 
 ---
 
-### 🎨 Customization
+## 🎨 Customization
 
 You can customize the **CSS styles** and **JavaScript functionality** according to your needs.
 
@@ -101,7 +101,7 @@ You can customize the **CSS styles** and **JavaScript functionality** according 
 
 ---
 
-### 🔗 Useful Links
+## 🔗 Useful Links
 
 [![Web Demo](https://img.shields.io/badge/Web-Demo-blue?style=for-the-badge&logo=google-chrome)](https://nexoscreator.github.io/html5-custom-video-player)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-green?style=for-the-badge&logo=github)](https://github.com/nexoscreator/html5-custom-video-player)
@@ -109,27 +109,33 @@ You can customize the **CSS styles** and **JavaScript functionality** according 
 
 ---
 
-### 🤝 Contributing
+## 🤝 Contributing
 
 We ❤️ contributions! Follow these steps to contribute:
 
-1. 🍴 Fork the repository
-2. 🌿 Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. 🚀 Push to the branch (`git push origin feature/AmazingFeature`)
-5. 🔃 Open a Pull Request
+1. 🍴 **Fork** the repository
+2. 🌿 **Create** a new branch (`git checkout -b feature/AmazingFeature`)
+3. 💾 **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. 🚀 **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. 🔃 **Open a Pull Request**
 
-Check out our [Contribution Guidelines](CONTRIBUTING.md) for more details.
+📖 _See our [Contribution Guidelines](CONTRIBUTING.md) for more details._
 
 ---
 
-### License 📄
+## 📄 License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-### 🌟 Star this project if you find it useful!
+## 📬 Contact & Community
+
+💬 Join us on **Discord**: [Click Here](https://discord.gg/H7pVc9aUK2)  
+🐦 **Follow on Twitter**: [@nexoscreator](https://twitter.com/nexoscreator)  
+📧 **Email**: [contact@nexoscreator.tech](mailto:contact@nexoscreator.tech)
+
+If you find this project helpful, please consider **starring ⭐ the repository** or **sponsoring 💖 on GitHub**!
 
 <p align="center">
   Created with ❤️ by <a href="https://github.com/nexoscreator">@nexoscreator</a>
