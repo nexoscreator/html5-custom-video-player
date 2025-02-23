@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/nexoscreator/html5-custom-video-player/discussions
+    about: Please use GitHub Discussions for general questions and support.
+  - name: 📖 Read the Docs
+    url: https://docs.nexoscreator.tech/
+    about: Check out the documentation before opening a new issue.

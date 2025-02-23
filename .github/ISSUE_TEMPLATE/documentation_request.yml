@@ -1,0 +1,54 @@
+name: "📖 Documentation Request"
+description: "Suggest improvements to the documentation"
+title: "[Docs]: <short description>"
+labels: ["documentation"]
+assignees: "nexoscreator"
+body:
+  - type: checkboxes
+    attributes:
+      label: "📌 Is this related to an existing feature or issue?"
+      description: "If yes, please provide the issue number or feature name."
+      options:
+        - label: "Yes (Issue/Feature: #<issue_number>)"
+          required: false
+        - label: "No (New documentation request)"
+          required: false
+  - type: checkboxes
+    attributes:
+      label: "📌 Where should this documentation be added?"
+      description: "Specify if this should be added to README, Wiki, API Docs, or another location."
+      options:
+        - label: "README.md"
+          required: false
+        - label: "Wiki"
+          required: false
+        - label: "API Documentation"
+          required: false
+  - type: input
+    attributes:
+      label: "Other"
+      description: "please specify"
+      placeholder: "___"
+  - type: textarea
+    attributes:
+      label: "📝 Describe the documentation update or addition"
+      description: "Provide a clear and concise description of what should be added or improved in the documentation."
+  - type: textarea
+    attributes:
+      label: "❓ Why is this documentation important?"
+      description: "Explain why this documentation is needed and how it benefits users or contributors."
+  - type: textarea
+    attributes:
+      label: "🔗 Additional Details or References"
+      description: "Add any screenshots, links, or references that can help understand this request."
+  - type: checkboxes
+    attributes:
+      label: "Check the following:"
+      options:
+        - label: "I have searched **existing issues** to avoid duplicates."
+          required: true
+        - label: "I am willing to **help write this documentation** _(optional)_."
+          required: false
+  - type: markdown
+    attributes:
+      value: "💖 **Thank you for helping improve Custom HTML5 Video Player!** 🚀"
