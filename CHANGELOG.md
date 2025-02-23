@@ -1,3 +1,4 @@
+- feat: Community Guide (#6)
 # 📜 Changelog
 
 All notable changes to this project will be documented in this file.  
